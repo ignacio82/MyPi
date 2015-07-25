@@ -1,3 +1,6 @@
+Module Fortranpi
+IMPLICIT NONE
+contains
 subroutine dboard(darts, dartsscore)
   implicit none
   integer, intent(in)           :: darts
@@ -19,7 +22,7 @@ dartsscore = 4.0d0*score/darts
 
 end subroutine dboard
 
-subroutine pi(avepi, DARTS, ROUNDS)
+subroutine pi(avepi, DARTS, ROUNDS) bind(C, name="pi_")
   implicit none
   double precision, intent(out)   ::  avepi
   integer, intent(in)             ::  DARTS, ROUNDS
@@ -27,7 +30,7 @@ subroutine pi(avepi, DARTS, ROUNDS)
   integer, allocatable            ::  seed(:)
   double precision                ::  pi_est, homepi, pirecv, pisum
 
-interface 
+interface
    subroutine dboard(darts, dartsscore)
       implicit none
       integer, intent(in)           :: darts
@@ -53,3 +56,5 @@ do i = 0, ROUNDS-1
   avepi = ((avepi*i) + pi_est)/(i + 1)
 end do
 end subroutine pi
+
+end module Fortranpi
