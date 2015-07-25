@@ -1,7 +1,7 @@
 Module Fortranpi
 IMPLICIT NONE
 contains
-subroutine dboard(darts, dartsscore)
+subroutine dboard(darts, dartsscore) bind(C, name="dboard_")
   implicit none
   integer, intent(in)           :: darts
   double precision, intent(out) :: dartsscore
