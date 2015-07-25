@@ -2,11 +2,11 @@ Module Fortranpi
 IMPLICIT NONE
 contains
 subroutine dboard(darts, dartsscore) bind(C, name="dboard_")
-  implicit none
-  integer, intent(in)           :: darts
-  double precision, intent(out) :: dartsscore
-  double precision              :: x_coord, y_coord
-  integer                       :: score, n
+  use, intrinsic :: iso_c_binding, only : c_double, c_int
+  integer(c_int), intent(in)           :: darts
+  real(c_double), intent(out)          :: dartsscore
+  real(c_double)                       :: x_coord, y_coord
+  integer(c_int)                       :: score, n
 
 score = 0
 do n = 1, darts
@@ -23,20 +23,12 @@ dartsscore = 4.0d0*score/darts
 end subroutine dboard
 
 subroutine pi(avepi, DARTS, ROUNDS) bind(C, name="pi_")
-  implicit none
-  double precision, intent(out)   ::  avepi
-  integer, intent(in)             ::  DARTS, ROUNDS
-  integer                         ::  MASTER, rank, i, n
-  integer, allocatable            ::  seed(:)
-  double precision                ::  pi_est, homepi, pirecv, pisum
-
-interface
-   subroutine dboard(darts, dartsscore)
-      implicit none
-      integer, intent(in)           :: darts
-      double precision, intent(out) :: dartsscore
-   end subroutine dboard
-end interface
+  use, intrinsic :: iso_c_binding, only : c_double, c_int
+  real(c_double), intent(out)            ::  avepi
+  integer(c_int), intent(in)             ::  DARTS, ROUNDS
+  integer(c_int)                         ::  MASTER, rank, i, n
+  integer(c_int), allocatable            ::  seed(:)
+  real(c_double)                         ::  pi_est, homepi, pirecv, pisum
 
 ! we set it to zero in the sequential run
 rank = 0
