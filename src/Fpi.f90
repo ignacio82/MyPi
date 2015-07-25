@@ -1,12 +1,11 @@
 Module Fortranpi
 IMPLICIT NONE
 contains
-subroutine dboard(darts, dartsscore) bind(C, name="dboard_")
-  use, intrinsic :: iso_c_binding, only : c_double, c_int
-  integer(c_int), intent(in)           :: darts
-  real(c_double), intent(out)          :: dartsscore
-  real(c_double)                       :: x_coord, y_coord
-  integer(c_int)                       :: score, n
+subroutine dboard(darts, dartsscore)
+  integer, intent(in)                    :: darts
+  double precision, intent(out)          :: dartsscore
+  double precision                       :: x_coord, y_coord
+  integer                                :: score, n
 
 score = 0
 do n = 1, darts
