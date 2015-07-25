@@ -22,12 +22,12 @@ dartsscore = 4.0d0*score/darts
 end subroutine dboard
 
 subroutine pi(avepi, DARTS, ROUNDS) bind(C, name="pi_")
-  use, intrinsic :: iso_c_binding, only : c_double, c_int
+  use, intrinsic                         :: iso_c_binding, only : c_double, c_int
   real(c_double), intent(out)            ::  avepi
   integer(c_int), intent(in)             ::  DARTS, ROUNDS
-  integer(c_int)                         ::  MASTER, rank, i, n
-  integer(c_int), allocatable            ::  seed(:)
-  real(c_double)                         ::  pi_est, homepi, pirecv, pisum
+  integer                                ::  MASTER, rank, i, n
+  integer, allocatable                   ::  seed(:)
+  double precision                       ::  pi_est, homepi, pirecv, pisum
 
 ! we set it to zero in the sequential run
 rank = 0
