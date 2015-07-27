@@ -1,7 +1,7 @@
 Package: MyPi
 Type: Package
 Title: Calculates Pi with Monte carlo simulation with R or Fortran
-Version: 0.1
+Version: 0.2
 Date: 2015-07-25
 Author: Ignacio Martinez
 Maintainer: Ignacio Martinez <ignacio82@gmail.com>
