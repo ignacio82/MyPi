@@ -10,6 +10,7 @@ Rdboard <- function(darts) {
   return(dartsscore)
   }
 
+#'@export
 Rpi <- function(DARTS, ROUNDS) {
   avepi <- 0
   for (i in 0:(ROUNDS - 1)) {

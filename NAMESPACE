@@ -1,2 +1,5 @@
-useDynLib(Fpi)
+export(Pibenchmark)
+export(Fpi)
+export(Rpi)
+useDynLib(MyPi)
 exportPattern("^[[:alpha:]]+")
