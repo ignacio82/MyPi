@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 export(Pibenchmark)
 export(Fpi)
 export(Rpi)
->>>>>>> a0c50adb352bf70a7316402c95264e680560f62d
 useDynLib(MyPi)
 exportPattern("^[[:alpha:]]+")
