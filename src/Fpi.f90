@@ -1,4 +1,5 @@
 Module Fortranpi
+USE MPI
 IMPLICIT NONE
 contains
 subroutine dboard(darts, dartsscore)
