@@ -1,2 +1,1 @@
-FC=mpif90
 PKG_FCFLAGS="-fno-stack-protector"
