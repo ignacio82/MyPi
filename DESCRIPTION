@@ -6,5 +6,7 @@ Date: 2015-07-25
 Author: Ignacio Martinez
 Maintainer: Ignacio Martinez <ignacio82@gmail.com>
 Description: Calculates Pi with Monte carlo simulation with R or Fortran
+Depends: snow
+Suggests: microbenchmark
 License: MIT
 LazyData: TRUE

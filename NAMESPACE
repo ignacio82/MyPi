@@ -1,5 +1,8 @@
 export(Pibenchmark)
+export(LongPibenchmark)
 export(Fpi)
+export(SnowPi)
+export(FMPIpi)
 export(Rpi)
 useDynLib(MyPi)
 exportPattern("^[[:alpha:]]+")

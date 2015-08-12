@@ -49,4 +49,38 @@ do i = 0, ROUNDS-1
 end do
 end subroutine pi
 
+
+subroutine snowpi(avepi, DARTS, ROUNDS, proc_num, numprocs) bind(C, name="snowpi_")
+use, intrinsic                         :: iso_c_binding, only : c_double, c_int
+real(c_double), intent(out)            :: avepi
+integer(c_int), intent(in)             :: DARTS, ROUNDS, proc_num, numprocs
+integer                                :: i, n, mynpts
+integer, allocatable                   :: seed(:)
+double precision                       :: pi_est
+
+  if (proc_num .eq. 1) then
+	  mynpts = ROUNDS - (numprocs-1)*(ROUNDS/numprocs)
+    else
+      mynpts = ROUNDS/numprocs
+  endif
+
+  ! initialize the random number generator
+  ! we make sure the seed is different for each task
+  call random_seed()
+  call random_seed(size = n)
+  allocate(seed(n))
+  seed = 12 + proc_num*11
+  call random_seed(put=seed(1:n))
+  deallocate(seed)
+
+  avepi=0.0d0
+    do i = 0, mynpts-1
+      call dboard(darts, pi_est)
+      ! calculate the average value of pi over all iterations
+      avepi = ((avepi*i) + pi_est)/(i + 1)
+  end do
+
+
+end subroutine snowpi
+
 end module Fortranpi
